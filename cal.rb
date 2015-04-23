@@ -1,4 +1,6 @@
 #!/usr/bin/env ruby
 month = ARGV[0]
 year = ARGV[1]
-print `cal #{month} #{year}`
+puts `cal #{month} #{year}`
+
+Default_error_msg = "Date not in acceptable format/range."
