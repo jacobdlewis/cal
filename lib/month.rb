@@ -11,7 +11,7 @@ class Month
   end
 
   def name
-    month_names = ["", " January", "February", "  March", "  April", "   May", "  June", "  July", " August", "September", " October", "November", "December"]
+    month_names = ["", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
     @name = month_names[@month]
     @name
   end
@@ -26,7 +26,10 @@ class Month
     m_length = count_days_in_month
     first_day = get_first_day_of_month
     print_out = ""
+    weekday_header = "Su Mo Tu We Th Fr Sa"
+    month_year_header = "#{name} #{year}".center(20).rstrip
 
+    #generate unformatted list of dates
     (1..m_length).each do |x|
       if x ==1
         print_out << "#{x}"
@@ -37,21 +40,15 @@ class Month
       end
     end
 
-    if first_day == 1
-      print_out.prepend(" ")
-    elsif first_day == 2
-      print_out.prepend("    ")
-    elsif first_day == 3
-      print_out.prepend("       ")
-    elsif first_day == 4
-      print_out.prepend("          ")
-    elsif first_day == 5
-      print_out.prepend("             ")
-    elsif first_day == 6
-      print_out.prepend("                ")
-    elsif first_day == 0
-      print_out.prepend("                   ")
-    end
+    #Add the appropriate number of leading spaces
+    #to the first day of the month
+    print_out.prepend(" ") if first_day == 1
+    print_out.prepend("    ") if first_day == 2
+    print_out.prepend("       ") if first_day == 3
+    print_out.prepend("          ") if first_day == 4
+    print_out.prepend("             ") if first_day == 5
+    print_out.prepend("                ") if first_day == 6
+    print_out.prepend("                   ") if first_day == 0
 
     line_1 = print_out.slice!(0, 21).rstrip
     line_2 = print_out.slice!(0, 21).rstrip
@@ -61,8 +58,8 @@ class Month
     line_6 = print_out.slice!(0, 21)
 
   <<EOS
-   #{name} #{year}
-Su Mo Tu We Th Fr Sa
+#{month_year_header}
+#{weekday_header}
 #{line_1}
 #{line_2}
 #{line_3}
@@ -95,6 +92,5 @@ EOS
       return 31
     end
   end
-
 
 end

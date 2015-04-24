@@ -61,7 +61,19 @@ EOS
 
   def test_name_march
     m = Month.new(05, 2008)
-    expected = "   May"
+    expected = "May"
+    assert_equal expected, m.name
+  end
+
+  def test_name_january
+    m = Month.new(1, 2001)
+    expected = "January"
+    assert_equal expected, m.name
+  end
+
+  def test_name_december
+    m = Month.new(12, 1801)
+    expected = "December"
     assert_equal expected, m.name
   end
 
