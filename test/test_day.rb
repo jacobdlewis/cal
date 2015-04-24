@@ -29,4 +29,9 @@ class TestDay < MiniTest::Test
     assert_equal 1, d.day_of_the_week
   end
 
+  def test_first_day_of_month_January_2000
+    d = Day.new(1, 2000)
+    assert_equal 7, d.day_of_the_week
+  end
+
 end
