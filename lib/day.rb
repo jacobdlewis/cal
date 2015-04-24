@@ -1,17 +1,31 @@
 class Day
-attr_reader :month, :year, :day
+attr_reader :month, :year
 
 
   def initialize(month, year)
     @month = month
     @year = year
-    @day = 1
   end
 
-  def day_of_week
+  def day_of_the_week
+
     day_of_month = 1
-    day_of_the_week = (day_of_month + (((month + 1) * 26)/10) + year + (year/4) + (6*((year/100))) + (year/400)) % 7
-    day_of_the_week
+
+    if month == 1 || month == 2
+      @month += 12
+      @year -= 1
+    end
+
+    ####################################################
+    # This is Zeller's Congruence. It calculates       #
+    # the day of the week for a specified date.        #
+    # In this implementation, Zeller's is always       #
+    # looking for the first day of the month.          #
+    # http://en.wikipedia.org/wiki/Zeller's_congruence #
+    ####################################################
+
+    day_of_week = (day_of_month + ((26 * (@month + 1))/10) + @year + (@year/4) + 6 * (@year/100) + (@year/400)) % 7
+    day_of_week
 
   end
 

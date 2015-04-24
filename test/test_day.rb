@@ -11,17 +11,22 @@ class TestDay < MiniTest::Test
 
   def test_first_day_of_month_Apr_2015
     d = Day.new(04, 2015)
-    assert_equal 4, d.day_of_week
+    assert_equal 4, d.day_of_the_week
   end
 
   def test_first_day_of_month_May_2016
     d = Day.new(5, 2016)
-    assert_equal 1, d.day_of_week
+    assert_equal 1, d.day_of_the_week
   end
 
   def test_first_day_of_month_Sept_1888
     d = Day.new(9, 1888)
-    assert_equal 0, d.day_of_week
+    assert_equal 0, d.day_of_the_week
+  end
+
+  def test_first_day_of_month_January_2012
+    d = Day.new(1, 2012)
+    assert_equal 1, d.day_of_the_week
   end
 
 end
