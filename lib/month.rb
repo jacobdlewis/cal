@@ -48,7 +48,7 @@ class Month
     print_out.prepend("          ") if first_day == 4
     print_out.prepend("             ") if first_day == 5
     print_out.prepend("                ") if first_day == 6
-    print_out.prepend("                   ") if first_day == 0
+    print_out.prepend("                   ") if first_day == 7
 
     line_1 = print_out.slice!(0, 21).rstrip
     line_2 = print_out.slice!(0, 21).rstrip

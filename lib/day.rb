@@ -21,11 +21,16 @@ attr_reader :month, :year
     # the day of the week for a specified date.        #
     # In this implementation, Zeller's is always       #
     # looking for the first day of the month.          #
+    # The function returns 1-7, corresponding to Su-Sa #
     # http://en.wikipedia.org/wiki/Zeller's_congruence #
     ####################################################
 
     day_of_week = (day_of_month + ((26 * (@month + 1))/10) + @year + (@year/4) + 6 * (@year/100) + (@year/400)) % 7
-    day_of_week
+    if day_of_week == 0
+      return 7
+    else
+      return day_of_week
+    end
 
   end
 
