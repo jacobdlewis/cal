@@ -9,7 +9,7 @@ class TestMonth < MiniTest::Test
   end
 
   def test_to_s_on_jan_1_2012
-    m = Month.new(01, 2012)
+    m = Month.new(1, 2012)
     expected = <<EOS
     January 2012
 Su Mo Tu We Th Fr Sa
@@ -38,10 +38,10 @@ EOS
     assert_equal expected, m.to_s
   end
 
-  def test_to_s_on_mar_2007
-    m = Month.new(05, 2007)
+  def test_to_s_on_july_2007
+    m = Month.new(07, 2007)
     expected = <<EOS
-      May 2007
+     July 2007
 Su Mo Tu We Th Fr Sa
  1  2  3  4  5  6  7
  8  9 10 11 12 13 14
@@ -111,6 +111,12 @@ EOS
     m = Month.new(10, 2015)
     expected = 31
     assert_equal expected, m.count_days_in_month
+  end
+
+  def test_get_first_day_in_month_April
+    m = Month.new(4, 2015)
+    expected = 4
+    assert_equal expected, m.get_first_day_of_month
   end
 
 end

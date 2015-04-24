@@ -1,3 +1,5 @@
+require_relative '../lib/day'
+
 class Month
   attr_reader :month, :year, :name
 
@@ -14,16 +16,59 @@ class Month
     @name
   end
 
+  def get_first_day_of_month
+    d = Day.new(month, year)
+    first_day = d.day_of_the_week
+    return first_day
+  end
+
   def to_s
-    <<EOS
+    m_length = count_days_in_month
+    first_day = get_first_day_of_month
+    print_out = ""
+
+    (1..m_length).each do |x|
+      if x ==1
+        print_out << "#{x}"
+      elsif x.to_s.length == 1
+        print_out << "  #{x}"
+      else
+        print_out << " #{x}"
+      end
+    end
+
+    if first_day == 1
+      print_out.prepend(" ")
+    elsif first_day == 2
+      print_out.prepend("    ")
+    elsif first_day == 3
+      print_out.prepend("       ")
+    elsif first_day == 4
+      print_out.prepend("          ")
+    elsif first_day == 5
+      print_out.prepend("             ")
+    elsif first_day == 6
+      print_out.prepend("                ")
+    elsif first_day == 0
+      print_out.prepend("                   ")
+    end
+
+    line_1 = print_out.slice!(0, 21).rstrip
+    line_2 = print_out.slice!(0, 21).rstrip
+    line_3 = print_out.slice!(0, 21).rstrip
+    line_4 = print_out.slice!(0, 21).rstrip
+    line_5 = print_out.slice!(0, 21).rstrip
+    line_6 = print_out.slice!(0, 21)
+
+  <<EOS
    #{name} #{year}
 Su Mo Tu We Th Fr Sa
- 1  2  3  4  5  6  7
- 8  9 10 11 12 13 14
-15 16 17 18 19 20 21
-22 23 24 25 26 27 28
-29 30 31
-
+#{line_1}
+#{line_2}
+#{line_3}
+#{line_4}
+#{line_5}
+#{line_6}
 EOS
   end
 
@@ -50,7 +95,6 @@ EOS
       return 31
     end
   end
-
 
 
 end
