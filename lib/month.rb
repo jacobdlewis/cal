@@ -1,6 +1,7 @@
 class Month
   attr_reader :month, :year, :name
 
+
   def initialize(month, year)
     @month = month
     @year = year
@@ -25,6 +26,31 @@ Su Mo Tu We Th Fr Sa
 
 EOS
   end
+
+  def is_leap_year?
+    if year % 100 == 0 && year % 400 != 0
+      return false
+    elsif year % 100 == 0 && year % 400 == 0
+      return true
+    elsif year % 4 == 0
+      return true
+    else
+      return false
+    end
+  end
+
+  def count_days_in_month
+    if [4, 6, 9, 11].include?(month)
+      return 30
+    elsif month == 2 && self.is_leap_year?
+      return 29
+    elsif month == 2 && self.is_leap_year? == false
+      return 28
+    else
+      return 31
+    end
+  end
+
 
 
 end
