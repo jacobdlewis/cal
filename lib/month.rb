@@ -17,9 +17,7 @@ class Month
   end
 
   def get_first_day_of_month
-    d = Day.new(month, year)
-    first_day = d.day_of_the_week
-    return first_day
+    Day.new(month, year).day_of_the_week
   end
 
   def to_s
