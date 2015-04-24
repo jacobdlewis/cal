@@ -40,15 +40,9 @@ class Month
       end
     end
 
-    #Add the appropriate number of leading spaces
-    #to the first day of the month
-    print_out.prepend(" ") if first_day == 1
-    print_out.prepend("    ") if first_day == 2
-    print_out.prepend("       ") if first_day == 3
-    print_out.prepend("          ") if first_day == 4
-    print_out.prepend("             ") if first_day == 5
-    print_out.prepend("                ") if first_day == 6
-    print_out.prepend("                   ") if first_day == 7
+    #Add the appropriate number of leading
+    #spaces to the first day of the month
+    print_out.prepend(" " * ((first_day * 3) -2) )
 
     line_1 = print_out.slice!(0, 21).rstrip
     line_2 = print_out.slice!(0, 21).rstrip
