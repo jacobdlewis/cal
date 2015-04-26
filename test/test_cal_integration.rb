@@ -1,6 +1,6 @@
 require_relative 'helper'
 
-class TestCheersIntegration < MiniTest::Test
+class TestCalIntegration < MiniTest::Test
 
   def test_that_test_suite_is_working
     output = false
