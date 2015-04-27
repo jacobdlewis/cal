@@ -3,7 +3,6 @@ require_relative '../lib/day'
 class Month
   attr_reader :month, :year, :name
 
-
   def initialize(month, year)
     @month = month
     @year = year
@@ -42,22 +41,15 @@ class Month
     #spaces to the first day of the month
     print_out.prepend(" " * ((first_day * 3) -2) )
 
-    line_1 = print_out.slice!(0, 21).rstrip
-    line_2 = print_out.slice!(0, 21).rstrip
-    line_3 = print_out.slice!(0, 21).rstrip
-    line_4 = print_out.slice!(0, 21).rstrip
-    line_5 = print_out.slice!(0, 21).rstrip
-    line_6 = print_out.slice!(0, 21)
-
   <<EOS
 #{month_year_header}
 #{weekday_header}
-#{line_1}
-#{line_2}
-#{line_3}
-#{line_4}
-#{line_5}
-#{line_6}
+#{print_out.slice!(0, 21).rstrip}
+#{print_out.slice!(0, 21).rstrip}
+#{print_out.slice!(0, 21).rstrip}
+#{print_out.slice!(0, 21).rstrip}
+#{print_out.slice!(0, 21).rstrip}
+#{print_out.slice!(0, 21)}
 EOS
   end
 
