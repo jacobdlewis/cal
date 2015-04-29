@@ -6,22 +6,34 @@ class Year
     @year = year
   end
 
-  def to_s
+  def create_header
+    month_names = []
+    (1..12).each do |x|
+      m = Month.new(x, @year)
+      month_names.push(m.name)
+    end
+    month_names
+  end
+
+  def create_month_array
     year = @year
     months = []
-    month_names = []
-    year_header = "#{year}".rjust(33) + "\n" + "\n"
-
     (1..12).each do |x|
       m = Month.new(x, year)
-      month_names.push(m.name)
       months.push(m.to_s.split("\n"))
     end
 
     months.map do |x|
       x.shift
     end
+    months
+  end
 
+  def to_s
+    year = @year
+    months = create_month_array
+    month_names = create_header
+    year_header = "#{year}".rjust(33) + "\n" + "\n"
     str_printout = "#{year_header}"
 
     months.each_slice(3) do |row|
