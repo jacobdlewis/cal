@@ -1,4 +1,5 @@
 require_relative '../lib/day'
+require_relative '../lib/year'
 
 class Month
   attr_reader :month, :year, :name
@@ -53,24 +54,15 @@ class Month
 EOS
   end
 
-  def is_leap_year?
-    if year % 100 == 0 && year % 400 != 0
-      return false
-    elsif year % 100 == 0 && year % 400 == 0
-      return true
-    elsif year % 4 == 0
-      return true
-    else
-      return false
-    end
-  end
 
   def count_days_in_month
+    y = Year.new(@year)
+
     if [4, 6, 9, 11].include?(month)
       return 30
-    elsif month == 2 && self.is_leap_year?
+    elsif month == 2 && y.is_leap_year?
       return 29
-    elsif month == 2 && self.is_leap_year? == false
+    elsif month == 2 && y.is_leap_year? == false
       return 28
     else
       return 31

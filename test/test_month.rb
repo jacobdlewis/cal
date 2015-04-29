@@ -77,29 +77,6 @@ EOS
     assert_equal expected, m.name
   end
 
-  def test_is_2000_leap_year
-    m = Month.new(1, 2000)
-    expected = true
-    assert_equal expected, m.is_leap_year?
-  end
-
-  def test_is_1800_leap_year
-    m = Month.new(1, 1800)
-    expected = false
-    assert_equal expected, m.is_leap_year?
-  end
-
-  def test_is_2016_leap_year
-    m = Month.new(1, 2016)
-    expected = true
-    assert_equal expected, m.is_leap_year?
-  end
-
-  def test_is_1997_leap_year
-    m = Month.new(1, 1997)
-    expected = false
-    assert_equal expected, m.is_leap_year?
-  end
 
   def test_days_in_April
     m = Month.new(4, 2015)

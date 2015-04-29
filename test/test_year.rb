@@ -39,6 +39,30 @@ class TestYear < MiniTest::Test
     assert_equal output, y.to_s
   end
 
+  def test_is_2000_leap_year
+    y = Year.new(2000)
+    expected = true
+    assert_equal expected, y.is_leap_year?
+  end
+
+  def test_is_1800_leap_year
+    y = Year.new(1800)
+    expected = false
+    assert_equal expected, y.is_leap_year?
+  end
+
+  def test_is_2016_leap_year
+    y = Year.new(2016)
+    expected = true
+    assert_equal expected, y.is_leap_year?
+  end
+
+  def test_is_1997_leap_year
+    y = Year.new(1997)
+    expected = false
+    assert_equal expected, y.is_leap_year?
+  end
+
 end
 
 

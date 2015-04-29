@@ -46,6 +46,19 @@ EOS
   str_printout
   end
 
+  def is_leap_year?
+    year = @year
+    if year % 100 == 0 && year % 400 != 0
+      return false
+    elsif year % 100 == 0 && year % 400 == 0
+      return true
+    elsif year % 4 == 0
+      return true
+    else
+      return false
+    end
+  end
+
 end
 
 
