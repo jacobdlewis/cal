@@ -6,6 +6,19 @@ class Year
     @year = year
   end
 
+  def is_leap_year?
+    year = @year
+    if year % 100 == 0 && year % 400 != 0
+      return nil
+    elsif year % 100 == 0 && year % 400 == 0
+      return true
+    elsif year % 4 == 0
+      return true
+    else
+      return nil
+    end
+  end
+
   def create_header
     month_names = []
     (1..12).each do |x|
@@ -27,12 +40,13 @@ class Year
       x.shift
     end
     months
+
   end
 
   def to_s
     year = @year
     months = create_month_array
-    month_names = create_header
+    month_names = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
     year_header = "#{year}".rjust(33) + "\n" + "\n"
     str_printout = "#{year_header}"
 
@@ -49,26 +63,13 @@ class Year
 #{row[0][0]}  #{row[1][0]}  #{row[2][0]}
 #{row[0][1]}  #{row[1][1]}  #{row[2][1]}
 #{row[0][2]}  #{row[1][2]}  #{row[2][2]}
-#{row[0][3]}  #{row[1][3]}  #{row[2][3]}
-#{row[0][4]}  #{row[1][4]}  #{row[2][4]}
+#{row[0][3]}  #{row[1][3]}  #{row[2][3].rstrip}
+#{row[0][4]}  #{row[1][4]}  #{row[2][4].rstrip}
 #{row[0][5].ljust(20)}  #{row[1][5].ljust(20)}  #{row[2][5].ljust(20).rstrip}
 #{row[0][6].ljust(20)}  #{row[1][6].ljust(20)}  #{row[2][6]}
 EOS
     end
   str_printout
-  end
-
-  def is_leap_year?
-    year = @year
-    if year % 100 == 0 && year % 400 != 0
-      return false
-    elsif year % 100 == 0 && year % 400 == 0
-      return true
-    elsif year % 4 == 0
-      return true
-    else
-      return false
-    end
   end
 
 end

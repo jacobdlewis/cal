@@ -47,7 +47,7 @@ class TestYear < MiniTest::Test
 
   def test_is_1800_leap_year
     y = Year.new(1800)
-    expected = false
+    expected = nil
     assert_equal expected, y.is_leap_year?
   end
 
@@ -59,7 +59,7 @@ class TestYear < MiniTest::Test
 
   def test_is_1997_leap_year
     y = Year.new(1997)
-    expected = false
+    expected = nil
     assert_equal expected, y.is_leap_year?
   end
 
