@@ -50,8 +50,8 @@ class Month
   end
 
   def format_days_string
-    days_string = create_days_string()
-    first_day = get_first_day_of_month()
+    days_string = create_days_string
+    first_day = get_first_day_of_month
     days_string.prepend(" " * ((first_day * 3) -2) )
     new_string = ""
     6.times do |x|
@@ -65,7 +65,7 @@ class Month
   end
 
   def to_s
-    days_string = format_days_string()
+    days_string = format_days_string
     weekday_header = "Su Mo Tu We Th Fr Sa"
     month_year_header = "#{name} #{year}".center(20).rstrip
 
